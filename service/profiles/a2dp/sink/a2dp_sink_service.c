@@ -136,6 +136,7 @@ static void a2dp_snk_service_handle_event(void* data)
             config->bits_per_sample,
             config->channel_mode);
         save_a2dp_codec_config(&device->peer, config);
+        bt_sal_a2dp_sink_send_delay_report(PRIMARY_ADAPTER, &device->bd_addr, 1000); // delay value in 1/10 milliseconds.
         break;
     }
     case PEER_STREAM_START_REQ:
